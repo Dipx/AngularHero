@@ -1,0 +1,8 @@
+<div>
+  <h2>Liste de liens utiles</h2>
+  <ul>
+    <li *ngFor="let link of links"><a href="{{link.url}}" target="_blank">{{link.title}}</a> <span *ngIf="link.description">({{link.description}})</span> <button (click)="deleteLink(link)">Delete</button></li>
+  </ul>
+</div>
+
+<link-new (addLink)="handleAdd($event)"></link-new>

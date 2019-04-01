@@ -1,0 +1,12 @@
+<button *ngIf="!adding" (click)="toggleAdd()">Add a link</button>
+<div *ngIf="adding">
+  <form (ngSubmit)="handleSubmit(form.value, form.valid)" #form="ngForm" novalidate>
+
+    <input type="text" [(ngModel)]="model.title" name="title" placeholder="Title *" required>
+    <input type="text" [(ngModel)]="model.url" name="url" placeholder="Url *" required>
+    <input type="text" [(ngModel)]="model.chapter" name="chapter" placeholder="chapter">
+    <input type="text" [(ngModel)]="model.description" name="description" placeholder="Description">
+
+    <button type="submit">{{form.valid ? 'Done' : 'Cancel'}}</button>
+  </form>
+</div>

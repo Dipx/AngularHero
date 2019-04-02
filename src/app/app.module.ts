@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
+import { ReactiveFormsModule } from '@angular/forms';
 
 //import { InMemoryDataService }  from './services/in-memory-data.service';
 
@@ -17,7 +17,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { LinksComponent } from './links/links.component';
 import { LinkNewComponent } from './link-new/link-new.component';
+import { LinkUpdateComponent } from './link-update/link-update.component';
 import { LoggingInterceptor } from './http-interceptor/logging-interceptor';
+import { ObservablesComponent } from './observables/observables.component';
 
 
 @NgModule({
@@ -29,12 +31,15 @@ import { LoggingInterceptor } from './http-interceptor/logging-interceptor';
     DashboardComponent,
     HeroSearchComponent,
     LinksComponent,
-    LinkNewComponent
+    LinkNewComponent,
+    ObservablesComponent,
+    LinkUpdateComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     // HttpClientInMemoryWebApiModule.forRoot(
     //   InMemoryDataService, {dataEncapsulation: false}

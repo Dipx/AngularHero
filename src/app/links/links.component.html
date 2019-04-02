@@ -1,8 +1,28 @@
-<div>
-  <h2>Liste de liens utiles</h2>
-  <ul>
-    <li *ngFor="let link of links"><a href="{{link.url}}" target="_blank">{{link.title}}</a> <span *ngIf="link.description">({{link.description}})</span> <button (click)="deleteLink(link)">Delete</button></li>
-  </ul>
-</div>
+<br><h4>List of useful links</h4>
+<table class="table table-hover">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Chapter</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let link of links">
+      <ng-template [ngIf]="!link.editing">
+        <th scope="row">{{link.id}}</th>
+        <td><a href="{{link.url}}" target="_blank">{{link.title}}</a></td>
+        <td>{{link.description ? link.description : 'No description'}}</td>
+        <td>{{link.chapter ? link.chapter : 'No chapter'}}</td>
+        <td><button class="btn btn-sm btn-outline-info" (click)="toggleUpdateLink(link)">Update</button> <button class="btn btn-sm btn-outline-danger" (click)="deleteLink(link)">Delete</button></td>
+      </ng-template>
+      <ng-template [ngIf]="link.editing">
+        <link-update [link]="link" (updateLink)="updateLink($event)"></link-update>
+      </ng-template>
+    </tr>
+  </tbody>
+</table>
 
 <link-new (addLink)="handleAdd($event)"></link-new>

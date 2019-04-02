@@ -1,19 +1,84 @@
 {
-  "posts": [
+  "links": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "title": "Observable vs Promises",
+      "url": "https://angular.io/guide/comparing-observables#cheat-sheet",
+      "editing": null,
+      "description": null,
+      "chapter": null
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "title": "Reactive Form",
+      "url": "https://angular.io/guide/reactive-forms",
+      "id": 2,
+      "editing": null,
+      "description": null,
+      "chapter": null
+    },
+    {
+      "title": "Observables in Angular",
+      "url": "https://angular.io/guide/observables-in-angular",
+      "id": 3
+    },
+    {
+      "title": "HttpClient",
+      "url": "https://angular.io/guide/http",
+      "chapter": "http",
+      "description": "Angular Doc about the HttpClient Module",
+      "id": 4,
+      "editing": null
+    },
+    {
+      "title": "NGRX",
+      "url": "https://ngrx.io/docs",
+      "id": 6
+    },
+    {
+      "title": "Reactive Angular with NgRx",
+      "url": "https://frontendmasters.com/courses/angular-reactive/",
+      "description": "(From Front End Master)",
+      "id": 7,
+      "editing": null,
+      "chapter": "5"
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "heroes": [
+    {
+      "id": 13,
+      "name": "Bombasto"
+    },
+    {
+      "id": 14,
+      "name": "Celeritas"
+    },
+    {
+      "id": 15,
+      "name": "Magneta"
+    },
+    {
+      "id": 16,
+      "name": "RubberMan"
+    },
+    {
+      "id": 17,
+      "name": "Dynama"
+    },
+    {
+      "id": 18,
+      "name": "Dr IQ"
+    },
+    {
+      "id": 19,
+      "name": "Magma"
+    },
+    {
+      "id": 20,
+      "name": "Tornado"
+    },
+    {
+      "name": "Mr subah",
+      "id": 21
+    }
+  ]
 }

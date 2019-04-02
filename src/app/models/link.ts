@@ -4,4 +4,5 @@ export class Link {
     url: string;
     description?: string;
     chapter?: string;
+    editing?: boolean;
 }

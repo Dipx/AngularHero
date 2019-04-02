@@ -1,0 +1,7 @@
+<form [formGroup]="linkForm" (ngSubmit)="update()">
+  <input type="text" formControlName="title" placeholder="title" required>
+  <input type="text" formControlName="url" placeholder="url" required>
+  <input type="text" formControlName="description" placeholder="description">
+  <input type="text" formControlName="chapter" placeholder="chapter">
+  <button type="submit" [disabled]="linkForm.invalid">{{linkForm.valid ? 'Done' : 'Form not valid'}}</button>
+</form>

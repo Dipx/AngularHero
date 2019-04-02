@@ -44,7 +44,8 @@ export class LinkService {
   }
 
   updateLink(link: Link): Observable<Link> {
-    return this.http.put<Link>(this.linksUrl, link, httpOptions).pipe(
+    link.editing = null;
+    return this.http.put<Link>(this.linksUrl + "/" + link.id, link, httpOptions).pipe(
       tap(_ => this.log(`PUT: ${this.linksUrl} | Successfuly updated a link with an id of ${link.id}`)),
       catchError(this.handleError<Link>('updateLink'))
     )
@@ -54,7 +55,7 @@ export class LinkService {
     const id = typeof link === 'number' ? link: link.id;
 
     return this.http.delete(`${this.linksUrl}/${id}`, httpOptions).pipe(
-      tap((deletedLink: Link) => this.log(`DELETE: ${this.linksUrl}/${id} | Successfuly deleted a link with an id of ${deletedLink.id}`)),
+      tap((deletedLink: Link) => this.log(`DELETE: ${this.linksUrl}/${id} | Successfuly deleted a link with an id of ${id}`)),
       catchError(this.handleError<Link>('deleteLink'))
     )
   }

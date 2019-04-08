@@ -2,9 +2,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 //import { InMemoryDataService }  from './services/in-memory-data.service';
 
@@ -20,6 +21,16 @@ import { LinkNewComponent } from './link-new/link-new.component';
 import { LinkUpdateComponent } from './link-update/link-update.component';
 import { LoggingInterceptor } from './http-interceptor/logging-interceptor';
 import { ObservablesComponent } from './observables/observables.component';
+import { CryptoObservableComponent } from './observables/crypto-observable/crypto-observable.component';
+import { ProductDetailComponent } from './observables/product-detail/product-detail.component';
+import { UnsavedChangesGuard } from './guards/UnsavedChangesGuard.guard';
+import { NewsResolver } from './resolvers/news.resolver';
+import { InterceptAllHttp } from './interceptors/httpInterceptAllReq.interceptor';
+import { ShowNewsComponent } from './observables/show-news/show-news.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './app.effects';
 
 
 @NgModule({
@@ -33,7 +44,10 @@ import { ObservablesComponent } from './observables/observables.component';
     LinksComponent,
     LinkNewComponent,
     ObservablesComponent,
-    LinkUpdateComponent
+    LinkUpdateComponent,
+    CryptoObservableComponent,
+    ProductDetailComponent,
+    ShowNewsComponent
   ],
   imports: [
     BrowserModule,
@@ -41,12 +55,21 @@ import { ObservablesComponent } from './observables/observables.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgbModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    EffectsModule.forRoot([AppEffects])
     // HttpClientInMemoryWebApiModule.forRoot(
     //   InMemoryDataService, {dataEncapsulation: false}
     // )
   ],
   providers: [
-    LoggingInterceptor
+    LoggingInterceptor,
+    UnsavedChangesGuard,
+    NewsResolver,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptAllHttp, multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

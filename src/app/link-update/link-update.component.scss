@@ -1,0 +1,12 @@
+form {
+    input {
+        &.ng-pristine {
+            background-color: gold;
+            color: black;
+        }
+        &.ng-dirty {
+            background-color: darkred;
+            color: white;
+        }
+    }
+}

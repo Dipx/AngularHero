@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Link } from '../models/link';
-import { LinkService } from '../services/link.service';
-import { pipe } from 'rxjs';
-import { take, tap, map } from 'rxjs/operators';
+import { LinkService } from '../services/Links/link.service';
 import { Location } from '@angular/common';
+import { LinkUpdateComponent } from '../link-update/link-update.component';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-links',
@@ -13,6 +13,16 @@ import { Location } from '@angular/common';
 export class LinksComponent implements OnInit {
   editing: boolean = false;
   links: Link[];
+
+  linkUpdateFormGroup: FormGroup;
+
+  @ViewChild(LinkUpdateComponent)
+    set linkUpdate(component: LinkUpdateComponent){
+      if(!!component && typeof component !== "undefined") {
+        console.log("viewchild");
+        this.linkUpdateFormGroup = component.linkUpdateForm;
+      }
+    }
 
   constructor(
     private linkService: LinkService,
@@ -53,7 +63,7 @@ export class LinksComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("init");
     this.getLinks();
   }
-
 }

@@ -1,2 +1,35 @@
 <h1>{{title}}</h1>
 
+<div class="row">
+    <crypto-observable></crypto-observable>
+</div>
+<div class="row">
+    <show-news [inputNews]="dataFromNews?.message"></show-news>
+</div>
+<div class="row">
+    <h4>Intro to async pipe (rxjs: interval, pipe, take)</h4>
+    {{number$ | async}}
+</div>
+<div class="row">
+    <h4>Array of Observable product (with async pipe inside the template)</h4>
+    <ul>
+        <li *ngFor="let product of products$ | async as product">
+            {{product.title}} ({{product.price}} $)
+        </li>
+    </ul>
+</div>
+<div class="row">
+    <h4>6.6 Observable and router</h4>
+    <span>If you have to subscribe to a route parameter, you have to subscribe to an observable like paramMap (ActivatedRoute -> snapshot). These use cases are called <i>master-detail communications</i></span>
+</div>
+<div class="row">
+    <h4>Multiple router outlet and Observable route param</h4>
+    <ul>
+        <li *ngFor="let product of products" 
+            [class.selected]="product === selectedProduct" 
+            (click)="onSelectProduct(product)">
+            {{product.title}} ({{product.price}} $)
+        </li>
+    </ul>
+    <router-outlet name="product"></router-outlet>
+</div>

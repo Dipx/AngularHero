@@ -17,6 +17,20 @@
     "lib": [
       "es2018",
       "dom"
-    ]
-  }
+    ],
+    "paths": {
+      "@customLib/core-data": [
+        "libs/index.ts"
+      ],
+      "ng6-lib": [
+        "dist/ng6-lib"
+      ],
+      "ng6-lib/*": [
+        "dist/ng6-lib/*"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }

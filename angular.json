@@ -134,6 +134,41 @@
           }
         }
       }
+    },
+    "ng6-lib": {
+      "root": "projects/ng6-lib",
+      "sourceRoot": "projects/ng6-lib/src",
+      "projectType": "library",
+      "prefix": "nlib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ng6-lib/tsconfig.lib.json",
+            "project": "projects/ng6-lib/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng6-lib/src/test.ts",
+            "tsConfig": "projects/ng6-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/ng6-lib/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ng6-lib/tsconfig.lib.json",
+              "projects/ng6-lib/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "angular-tour-of-heroes"
